@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.css"
+      integrity="sha256-YC896To53D/eet6K3jAwOq67iCIK24u2Hg6CQ+026I8="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Ionic Framework -->
+    <link
+      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Custom style -->
+    <link rel="stylesheet" href="../asset/css/style.css" />
+    <title>Order</title>
+  </head>
+  <body>
+    <!-- Login Choice -->
+    <main>
+      <div class="card main-section my-4">
+        <div class="card-header bg-success text-white">
+          <h4>
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+          </h4>
+        </div>
+        <!-- Card Main Content -->
+        <div class="card-body">
+          <div class="row">
+            <!-- List and search -->
+            <div class="col-md-8">
+              <!-- Card Product List -->
+              <div class="row" id="product-list-section">
+                <div class="col-md-4 mb-2">
+                  <div class="card">
+                    <img
+                      src="https://source.unsplash.com/random/200x201.jpg"
+                      alt="product-img"
+                    />
+                    <div class="card-body text-center">
+                      <h4>
+                        Product title
+                      </h4>
+                      <p class="mute">price $$$</p>
+                      <a href="#" class="btn btn-success btn-sm"> details</a>
+                      <button class="btn btn-success btn-sm add-button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <div class="card">
+                    <img
+                      src="https://source.unsplash.com/random/200x202.jpg"
+                      alt="product-img"
+                    />
+                    <div class="card-body text-center">
+                      <h4>
+                        Product title
+                      </h4>
+                      <p class="mute">price $$$</p>
+                      <a href="#" class="btn btn-success btn-sm"> details</a>
+                      <button class="btn btn-success btn-sm add-button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <div class="card">
+                    <img
+                      src="https://source.unsplash.com/random/200x203.jpg"
+                      alt="product-img"
+                    />
+                    <div class="card-body text-center">
+                      <h4>
+                        Product title
+                      </h4>
+                      <p class="mute">price $$$</p>
+                      <a href="#" class="btn btn-success btn-sm"> details</a>
+                      <button class="btn btn-success btn-sm add-button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <div class="card">
+                    <img
+                      src="https://source.unsplash.com/random/201x200.jpg"
+                      alt="product-img"
+                    />
+                    <div class="card-body text-center">
+                      <h4>
+                        Product title
+                      </h4>
+                      <p class="mute">price $$$</p>
+                      <a href="#" class="btn btn-success btn-sm"> details</a>
+                      <button class="btn btn-success btn-sm add-button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Bill history -->
+            <div id="bill-history-section" class="col-md-4 border-left">
+              <div class="expenses">
+                <h2 class="text-center">Order</h2>
+
+                <div class="order_list">
+                  <!-- Order item here -->
+                </div>
+                <div id="bill-out" class="form-control text-center">
+                  <p><strong>Total price:</strong> 500.000.000 vnd</p>
+                  <button class="btn btn-outline-success">
+                    Bill Out
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <!-- search bar -->
+            <form action="#" method="POST" class="mr-auto">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="search key"
+                  name="searchKey"
+                />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success">
+                    Search
+                  </button>
+                </div>
+
+                <div class="mx-2">
+                  <select name="category" class="form-control">
+                    <!-- value nên dùng id của bảng product type -->
+                    <option value="t001">Ram</option>
+                    <option value="t002">Laptop</option>
+                    <option value="t003">SSD</option>
+                    <option value="t004">HDD</option>
+                    <option value="t005">Keyboard</option>
+                    <option value="t006">Mouse</option>
+                  </select>
+                </div>
+
+                <div class="mx-2">
+                  <select
+                    name="cty"
+                    class="form-control"
+                    aria-placeholder="cty"
+                  >
+                    <option value="logitech">Logitech</option>
+                    <option value="des">Intel</option>
+                    <option value="inc">AMD</option>
+                  </select>
+                </div>
+
+                <div class="mx-2">
+                  <select
+                    name="sort"
+                    class="form-control"
+                    aria-placeholder="sort"
+                  >
+                    <option value="abc">ABC</option>
+                    <option value="des">Descrease</option>
+                    <option value="inc">Increase</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+            <div class="mr-2">
+              <a class="btn btn-secondary back-button text-white">Back</a>
+            </div>
+
+            <div>
+              <a href="./login-assist.html" class="btn btn-success">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../asset/js/jquery.js"></script>
+    <script src="../asset/js/order.js"></script>
+  </body>
+</html>

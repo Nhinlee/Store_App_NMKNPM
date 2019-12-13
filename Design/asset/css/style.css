@@ -1,0 +1,144 @@
+.main-section {
+  margin: auto;
+  min-height: 700px;
+  width: 85%;
+  border: 1px solid !important;
+}
+
+.login-section {
+  margin-top: 150px;
+  margin-bottom: -150px;
+  height: 530px;
+  width: 30%;
+}
+
+#product-list-section,
+#bill-history-section,
+#usecase-choice {
+  overflow-y: auto;
+  height: 520px;
+}
+
+.right {
+  float: right;
+}
+
+/* Order Item */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.item {
+  padding: 13px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.item__delete {
+  float: left;
+}
+
+.item__delete--btn {
+  padding: 0;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  display: none;
+}
+
+.item__delete--btn:focus {
+  outline: none;
+}
+
+.item__delete--btn:active {
+  transform: translateY(2px);
+}
+
+.item:first-child {
+  border-top: 1px solid #e7e7e7;
+}
+.item:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.product-title {
+  float: left;
+}
+
+.item__value {
+  float: left;
+  transition: transform 0.3s;
+}
+
+.item__number {
+  float: left;
+  margin-left: 20px;
+  transition: transform 0.3s;
+  font-size: 11px;
+  padding: 3px;
+  border-radius: 3px;
+  width: 32px;
+  text-align: center;
+}
+
+.item__delete {
+  float: left;
+}
+.item__delete--btn {
+  color: #fc3737;
+}
+
+.item:hover .item__delete--btn {
+  display: block;
+}
+.item:hover .item__value {
+  transform: translateX(-20px);
+}
+.item:hover .item__number {
+  transform: translateX(-20px);
+}
+.item__number {
+  float: left;
+  margin-left: 20px;
+  transition: transform 0.3s;
+  font-size: 11px;
+  background-color: #ffdad9;
+  padding: 3px;
+  border-radius: 3px;
+  width: 32px;
+  text-align: center;
+}
+
+/* custom card hover */
+#usecase-choice .choice-card:hover {
+  background: #fff !important;
+  color: #28a745 !important;
+  border: solid #28a745;
+}
+
+/* custom taskbar */
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #28a745;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #28a745;
+}
