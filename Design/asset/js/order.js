@@ -1,4 +1,5 @@
 $(".back-button").click(function() {
+  console.log("hello bug here");
   $("body").load("usecase-choice.html");
 });
 
@@ -13,6 +14,7 @@ $(".add-button").click(function() {
                               </div>
                           </div>
                         </div>`);
+  $("body").load("usecase-choice.html");
 });
 
 function rmOrder() {
