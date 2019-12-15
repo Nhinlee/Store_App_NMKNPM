@@ -35,7 +35,7 @@
   border-bottom: 1px solid #e7e7e7;
 }
 
-.item__delete {
+.item-delete {
   float: left;
 }
 
@@ -50,7 +50,7 @@
   display: none;
 }
 
-.item__delete--btn:focus {
+.item-delete--btn:focus {
   outline: none;
 }
 
@@ -65,16 +65,16 @@
   background-color: #f7f7f7;
 }
 
-.product-title {
+.item-product-title {
   float: left;
 }
 
-.item__value {
+.item-value {
   float: left;
   transition: transform 0.3s;
 }
 
-.item__number {
+.item-number {
   float: left;
   margin-left: 20px;
   transition: transform 0.3s;
@@ -85,7 +85,7 @@
   text-align: center;
 }
 
-.item__delete {
+.item-delete {
   float: left;
 }
 .item__delete--btn {
@@ -95,13 +95,13 @@
 .item:hover .item__delete--btn {
   display: block;
 }
-.item:hover .item__value {
+.item:hover .item-value {
   transform: translateX(-20px);
 }
-.item:hover .item__number {
+.item:hover .item-number {
   transform: translateX(-20px);
 }
-.item__number {
+.item-number {
   float: left;
   margin-left: 20px;
   transition: transform 0.3s;
@@ -112,6 +112,8 @@
   width: 32px;
   text-align: center;
 }
+
+/* Bill out */
 
 /* custom card hover */
 #usecase-choice .choice-card:hover {

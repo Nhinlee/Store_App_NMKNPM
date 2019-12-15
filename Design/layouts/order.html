@@ -14,12 +14,6 @@
       integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.css"
-      integrity="sha256-YC896To53D/eet6K3jAwOq67iCIK24u2Hg6CQ+026I8="
-      crossorigin="anonymous"
-    />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -61,9 +55,9 @@
                     />
                     <div class="card-body text-center">
                       <h4>
-                        Product title
+                        Product 1
                       </h4>
-                      <p class="mute">price $$$</p>
+                      <p class="mute">125000</p>
                       <a href="#" class="btn btn-success btn-sm"> details</a>
                       <button class="btn btn-success btn-sm add-button">
                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -79,9 +73,9 @@
                     />
                     <div class="card-body text-center">
                       <h4>
-                        Product title
+                        Product 2
                       </h4>
-                      <p class="mute">price $$$</p>
+                      <p class="mute">245000</p>
                       <a href="#" class="btn btn-success btn-sm"> details</a>
                       <button class="btn btn-success btn-sm add-button">
                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -97,9 +91,9 @@
                     />
                     <div class="card-body text-center">
                       <h4>
-                        Product title
+                        Product 3
                       </h4>
-                      <p class="mute">price $$$</p>
+                      <p class="mute">315000</p>
                       <a href="#" class="btn btn-success btn-sm"> details</a>
                       <button class="btn btn-success btn-sm add-button">
                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -115,9 +109,9 @@
                     />
                     <div class="card-body text-center">
                       <h4>
-                        Product title
+                        Product 4
                       </h4>
-                      <p class="mute">price $$$</p>
+                      <p class="mute">455000</p>
                       <a href="#" class="btn btn-success btn-sm"> details</a>
                       <button class="btn btn-success btn-sm add-button">
                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -129,18 +123,16 @@
             </div>
             <!-- Bill history -->
             <div id="bill-history-section" class="col-md-4 border-left">
-              <div class="expenses">
-                <h2 class="text-center">Order</h2>
+              <h2 class="text-center">Order</h2>
 
-                <div class="order_list">
-                  <!-- Order item here -->
-                </div>
-                <div id="bill-out" class="form-control text-center">
-                  <p><strong>Total price:</strong> 500.000.000 vnd</p>
-                  <button class="btn btn-outline-success">
-                    Bill Out
-                  </button>
-                </div>
+              <div id="order-list">
+                <!-- Order item here -->
+              </div>
+              <div id="bill-out" class="form-control text-center">
+                <p id="total-price"><strong>Total price:</strong> 0 VND</p>
+                <button class="btn btn-outline-success">
+                  Bill Out
+                </button>
               </div>
             </div>
           </div>
@@ -200,7 +192,9 @@
               </div>
             </form>
             <div class="mr-2">
-              <a class="btn btn-secondary back-button text-white">Back</a>
+              <a href="usecase-choice.html" class="btn btn-secondary text-white"
+                >Back</a
+              >
             </div>
 
             <div>
