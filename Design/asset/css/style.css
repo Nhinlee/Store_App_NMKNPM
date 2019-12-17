@@ -1,7 +1,7 @@
 .main-section {
   margin: auto;
-  min-height: 700px;
-  width: 85%;
+  height: 700px !important;
+  width: 85% !important;
   border: 1px solid !important;
 }
 
@@ -12,6 +12,8 @@
   width: 30%;
 }
 
+/* Order.html */
+
 #product-list-section,
 #bill-history-section,
 #usecase-choice {
@@ -19,11 +21,17 @@
   height: 520px;
 }
 
+#order-list {
+  overflow-y: auto;
+  height: fit-content;
+  max-height: 73%;
+}
+
 .right {
   float: right;
 }
 
-/* Order Item */
+/* Order Item of Order.html */
 .clearfix::after {
   content: "";
   display: table;
@@ -114,6 +122,24 @@
 }
 
 /* Bill out */
+.customer-infor {
+  height: 520px;
+  width: 75%;
+}
+
+#bill-history-finish {
+  height: 320px;
+}
+
+/* Bill History List In Day */
+.bill-history-list {
+  height: 400px;
+  overflow-y: auto;
+}
+.total-price {
+  widows: 30%;
+  height: fit-content;
+}
 
 /* custom card hover */
 #usecase-choice .choice-card:hover {

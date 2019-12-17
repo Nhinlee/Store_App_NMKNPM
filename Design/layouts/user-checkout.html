@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Custom style -->
+    <link rel="stylesheet" href="../asset/css/style.css" />
+
+    <title>User Checkout</title>
+  </head>
+  <body>
+    <!-- Login Choice -->
+    <main>
+      <div class="card main-section my-4 fixed-center">
+        <div class="card-header bg-success text-white">
+          <h4>
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+          </h4>
+        </div>
+        <div class="card-body d-flex justify-content-center text-center">
+          <div class="customer-infor">
+            <h1 class="display-4">Customer Information</h1>
+            <form action="/assist/order" method="POST" class="form-group my-4">
+              <div class="row">
+                <!-- Customer Information -->
+                <div class="col-md-6">
+                  <!-- Name -->
+                  <div class="mb-4">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Full Name..."
+                      class="form-control"
+                    />
+                  </div>
+                  <!-- SDT -->
+                  <div class="mb-4">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      class="form-control"
+                    />
+                  </div>
+                  <!-- SDT -->
+                  <div class="mb-4">
+                    <input
+                      type="text"
+                      name="phone"
+                      placeholder="Phone number..."
+                      class="form-control"
+                    />
+                  </div>
+                  <!-- BirthDate + Gender -->
+                  <div class="input-group">
+                    <div class="mb-4 input-group-item">
+                      <label
+                        class="mr-sm-2 sr-only"
+                        for="inlineFormCustomSelect"
+                        >Preference</label
+                      >
+                      <select
+                        class="custom-select mr-sm-2"
+                        id="inlineFormCustomSelect"
+                      >
+                        <option value="1" selected>Male</option>
+                        <option value="2">Female</option>
+                        <option value="3">Else...</option>
+                      </select>
+                    </div>
+                    <div class="mb-2 ml-auto input-group-item">
+                      <input type="date" name="address" class="form-control" />
+                    </div>
+                  </div>
+                  <!-- Address -->
+                  <div class="mb-2">
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder="Address..."
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <!-- Ordered List -->
+                <div class="col-md-6">
+                  <!-- Bill history -->
+                  <!-- Bill nay anh voi thien lam cach nao do de cho tat ca cac Item khanh hang mua submit dc len server de luu vao bang hoa don nha-->
+                  <div id="bill-history-finish">
+                    <div id="order-list">
+                      <!-- Order item here -->
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item clearfix" id="item-0">
+                        <div class="item-product-title">Product title</div>
+                        <div class="right clearfix">
+                          <div class="item-value">12312312</div>
+                          <div class="item-number bg-success text-white">
+                            <strong>1</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-control text-center">
+                      <p id="total-price">
+                        <strong>Total price:</strong> dummy VND
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success my-5">
+                Finish Bill
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <div class="mr-2">
+              <a href="usecase-choice.html" class="btn btn-secondary text-white"
+                >Back</a
+              >
+            </div>
+
+            <div>
+              <a href="./login-assist.html" class="btn btn-success">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
