@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.css"
+      integrity="sha256-YC896To53D/eet6K3jAwOq67iCIK24u2Hg6CQ+026I8="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Custom style -->
+    <link rel="stylesheet" href="/asset/css/style.css" />
+    <title>usecase-choice</title>
+  </head>
+  <body>
+    <main>
+      <div class="card main-section my-4">
+        <div class="card-header bg-success text-white">
+          <h4>
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+          </h4>
+        </div>
+        <!-- Card Main Content -->
+        <div class="card-body">
+          <div id="usecase-choice" class="container">
+            <div class="row">
+              <!-- History Card -->
+              <div class="col-md-6">
+                <div
+                  id="history-card"
+                  class="card text-white bg-success text-center mt-4 choice-card"
+                >
+                  <div class="card-body">
+                    <h1 class="display-2">
+                      <i class="fa fa-history" aria-hidden="true"></i>
+                    </h1>
+                    <h1 class="display-2">
+                      History
+                    </h1>
+                    <p class="lead">click to views bill history</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Order Card -->
+              <div class="col-md-6">
+                <a href="/employee/order">
+                  <div
+                    id="order-card"
+                    class="card text-white bg-success text-center mt-4 choice-card"
+                  >
+                    <div class="card-body">
+                      <h1 class="display-2">
+                        <i class="fab fa-first-order-alt"></i>
+                      </h1>
+                      <h1 class="display-2">
+                        Order
+                      </h1>
+                      <p class="lead">
+                        click to views product list and order for customer
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <div>
+              <a href="/logout" class="btn btn-success">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../asset/js/jquery.js"></script>
+    <script>
+      $("#order-card").click(function() {
+        $("body").load("order.html");
+      });
+    </script>
+  </body>
+</html>
