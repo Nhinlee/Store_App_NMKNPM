@@ -92,6 +92,18 @@ var UIController = (function() {
     cat_name: "#category-name",
     card_id: ".card-product-id"
   };
+  var FormatMoney = function(money) {
+    money = money.toString();
+    var format = "";
+    let i = money.length,
+      k = 0;
+    while (i-- > 0) {
+      format = money[i] + format;
+      k++;
+      if (k % 3 === 0 && i != 0) format = "." + format;
+    }
+    return format;
+  };
   return {
     displayProdList: function(list) {
       // Empty product list:
@@ -111,7 +123,7 @@ var UIController = (function() {
               ${e.name}
             </h4>
             <p class ="d-none card-product-id">${e._id}</p>
-            <p class="mute card-product-price">${e.price} VND</p>
+            <p class="mute card-product-price">${FormatMoney(e.price)} VND</p>
             <a href="#" class="btn btn-success btn-sm"> details</a>
             <button class="btn btn-success btn-sm add-button">
               <i class="fa fa-plus" aria-hidden="true"></i>
@@ -127,10 +139,14 @@ var UIController = (function() {
       // Display order list:
       list.forEach(e => {
         $("#order-list").append(`<div class="item clearfix" id="item-0">
-                          <div class="item-product-title">${e.title}</div>
+                          <div class="item-product-title">${e.name}</div>
                           <div class="right clearfix">
-                              <div class="item-value">${e.price}</div>
-                              <div class="item-number bg-success text-white"><strong>${e.number}</strong></div>
+                              <div class="item-value">${FormatMoney(
+                                e.price
+                              )} VND</div>
+                              <div class="item-number bg-success text-white"><strong>${
+                                e.number
+                              }</strong></div>
                               <div class="item-delete">
                                   <button class="item__delete--btn"><i class="far fa-times-circle mt-0"></i></button>
                               </div>
@@ -139,7 +155,7 @@ var UIController = (function() {
       });
       $("#bill-out")
         .children("p", "#total-price")
-        .html(`<strong>Total price:</strong> ${total} VND`);
+        .html(`<strong>Total price:</strong> ${FormatMoney(total)} VND`);
     },
     getDOM: function() {
       return DOM;
