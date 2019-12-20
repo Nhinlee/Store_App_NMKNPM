@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     username: String,
     password: String,
     role: String
-}, { collection: 'nguoi_dung' });
+}, { collection: 'user' });
 
 
-module.exports = mongoose.model('nguoi_dung', userSchema);
+module.exports = mongoose.model('user', userSchema);

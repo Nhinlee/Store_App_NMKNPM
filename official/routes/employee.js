@@ -10,4 +10,8 @@ router.get('/order', function(req, res, next) {
     employeeController.getOrder(req, res, next);
 });
 
+router.get('/checkout', function(req, res, next) {
+    employeeController.getCheckOut(req, res, next);
+});
+
 module.exports = router;

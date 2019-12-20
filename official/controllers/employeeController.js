@@ -32,5 +32,22 @@ module.exports = {
         }
         else
             res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+    },
+    getCheckOut: function(req, res, next){
+        if (req.isAuthenticated())
+        {
+            if (req.user.role == "admin"){
+                res.redirect('/admin/checkout');
+            }
+            else
+            {
+                if (req.user.role == "employee")
+                {   
+                    res.render('pages/checkout');
+                }
+            }
+        }
+        else
+            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
     }
 }

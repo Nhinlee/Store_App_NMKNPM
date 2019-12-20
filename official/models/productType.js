@@ -4,6 +4,6 @@ mongoose.connect(process.env.URI, { useUnifiedTopology: true, useNewUrlParser: t
 
 const productTypeSchema = new mongoose.Schema({
     name: String
-}, { collection: 'loai_san_pham' });
+}, { collection: 'product-type' });
 
-module.exports = mongoose.model('loai_san_pham', productTypeSchema);
+module.exports = mongoose.model('product-type', productTypeSchema);

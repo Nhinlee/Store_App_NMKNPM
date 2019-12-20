@@ -46,18 +46,18 @@
             <!-- Bill history -->
             <form
               id="bill-history-section"
-              method="POST"
-              action="/assist/user-checkout"
+              method="GET"
               class="col-md-4 border-left"
+              onsubmit="return billOutOnClick(this)"
             >
               <h2 class="text-center">Order</h2>
 
               <div id="order-list">
                 <!-- Order item here -->
               </div>
-              <div id="bill-out" class="form-control text-center">
+              <div id="bill-out" class="text-center">
                 <p id="total-price"><strong>Total price:</strong> 0 VND</p>
-                <button type="submit" class="btn btn-outline-success">
+                <button class="btn btn-outline-success">
                   Bill Out
                 </button>
               </div>
@@ -123,9 +123,25 @@
     ></script>
     <script src="/asset/js/jquery.js"></script>
     <script src="/asset/js/order.js"></script>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <!-- <script src="/javascripts/custom.js"></script> -->
+    <script>
+      function billOutOnClick(tag){
+        const orderList = ProdController.getOrderList();
+        if (orderList.length == 0)
+        {  
+          alert('Hoá đơn trống!');
+          return false;
+        }
+        else
+        {
+          localStorage.setItem("orderList", JSON.stringify(orderList));
+          localStorage.setItem('totalPrice', document.getElementById('total-price').textContent.substring(13));
+          let url = window.location.href;
+          url = url.substring(0, url.length - 5) + 'checkout';
+          tag.action = url;
+          window.location.href = url;
+          return false;
+        }
+      }
+    </script>
   </body>
 </html>

@@ -3,12 +3,11 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.URI, { useUnifiedTopology: true, useNewUrlParser: true });
 
 const productSchema = new mongoose.Schema({
-    name: String,
-    type: String,
-    price: Number,
-    descrition: String,
+    billId: String,
+    productId: String,
+    productName: String,
     quantity: Number,
-    image: String
-}, { collection: 'product' });
+    productPrice: Number
+}, { collection: 'bill-detail' });
 
-module.exports = mongoose.model('product', productSchema);
+module.exports = mongoose.model('bill-detail', productSchema);
