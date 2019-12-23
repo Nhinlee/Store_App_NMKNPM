@@ -7,7 +7,6 @@ passport.use(new LocalStrategy(
     async function(username, password, done) {
       try{
           const user = await userDB.findOne({username: username});
-          console.log(user.password);
           if (user == null)
               return done(null, false);
           const res = await bcrypt.compare(password, user.password);

@@ -14,4 +14,8 @@ router.get('/checkout', function(req, res, next) {
     employeeController.getCheckOut(req, res, next);
 });
 
+router.get('/history-inday', function(req, res, next) {
+    employeeController.getHistoryInday(req, res, next);
+});
+
 module.exports = router;

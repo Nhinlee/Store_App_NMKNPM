@@ -21,7 +21,16 @@ function formatMoney(money) {
     }
     return format;
 };
-
+function backEvent(){
+    const url = window.location.href;
+    const tokens = url.split('/');
+    let resUrl = "";
+    for (i = 3; i < tokens.length - 1; i++)
+    {
+      resUrl = resUrl + "/" + tokens[i];
+    }
+    window.location.href = resUrl + "/order";
+}
 function addBill(name, price, quantity){
     const htmlElement = '<div class="item-product-title">'+ name + '</div><div class="right clearfix"> <div class="item-value">'+ formatMoney(price) + ' VND' + '</div><div class="item-number bg-success text-white"> <strong>' + quantity + '</strong></div></div>';
     const div = document.createElement("div");
@@ -69,7 +78,6 @@ function reFormatPrice(money){
 async function postBill(){
     const totalPrice = reFormatPrice(localStorage.getItem('totalPrice'));
     const now = new Date();
-    const createOn = now.toISOString();
     const customer = getCustomerInfo();
     if (!checkCustomerInfo(customer))
     {
@@ -80,7 +88,7 @@ async function postBill(){
         customer: customer,
         orderList: orderList,
         totalPrice: totalPrice,
-        createOn: createOn
+        createOn: now
     };
     try{
         const res = await fetch("http://localhost:3000/api/checkout",{

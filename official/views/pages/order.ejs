@@ -94,7 +94,7 @@
               </div>
             </div>
             <div class="mr-2">
-              <a href="/employee" class="btn btn-secondary text-white">Back</a>
+              <a onclick="return backEvent();" class="btn btn-secondary text-white">Back</a>
             </div>
 
             <div>
@@ -136,11 +136,28 @@
           localStorage.setItem("orderList", JSON.stringify(orderList));
           localStorage.setItem('totalPrice', document.getElementById('total-price').textContent.substring(13));
           let url = window.location.href;
-          url = url.substring(0, url.length - 5) + 'checkout';
-          tag.action = url;
-          window.location.href = url;
+          const tokens = url.split('/');
+          let resUrl  = "";
+          for (i = 3; i < tokens.length - 1; i++)
+          {
+            resUrl = resUrl + "/" + tokens[i];
+          }
+          resUrl += "/checkout";
+          tag.action = resUrl;
+          window.location.href = resUrl;
           return false;
         }
+      }
+
+      function backEvent(){
+        const url = window.location.href;
+        const tokens = url.split('/');
+        let resUrl = "";
+        for (i = 3; i < tokens.length - 1; i++)
+        {
+          resUrl = resUrl + "/" + tokens[i];
+        }
+        window.location.href = resUrl;
       }
     </script>
   </body>

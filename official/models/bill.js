@@ -4,7 +4,7 @@ mongoose.connect(process.env.URI, { useUnifiedTopology: true, useNewUrlParser: t
 
 const productSchema = new mongoose.Schema({
     customerId: String,
-    createOn: String,
+    createOn: Date,
     totalPrice: Number
 }, { collection: 'bill' });
 
