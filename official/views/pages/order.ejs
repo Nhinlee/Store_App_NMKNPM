@@ -55,7 +55,7 @@
               <div id="order-list">
                 <!-- Order item here -->
               </div>
-              <div id="bill-out" class="text-center">
+              <div id="bill-out" class="text-center py-2">
                 <p id="total-price"><strong>Total price:</strong> 0 VND</p>
                 <button class="btn btn-outline-success">
                   Bill Out
@@ -94,7 +94,11 @@
               </div>
             </div>
             <div class="mr-2">
-              <a onclick="return backEvent();" class="btn btn-secondary text-white">Back</a>
+              <a
+                onclick="return backEvent();"
+                class="btn btn-secondary text-white"
+                >Back</a
+              >
             </div>
 
             <div>
@@ -124,22 +128,21 @@
     <script src="/asset/js/jquery.js"></script>
     <script src="/asset/js/order.js"></script>
     <script>
-      function billOutOnClick(tag){
+      function billOutOnClick(tag) {
         const orderList = ProdController.getOrderList();
-        if (orderList.length == 0)
-        {  
-          alert('Hoá đơn trống!');
+        if (orderList.length == 0) {
+          alert("Hoá đơn trống!");
           return false;
-        }
-        else
-        {
+        } else {
           localStorage.setItem("orderList", JSON.stringify(orderList));
-          localStorage.setItem('totalPrice', document.getElementById('total-price').textContent.substring(13));
+          localStorage.setItem(
+            "totalPrice",
+            document.getElementById("total-price").textContent.substring(13)
+          );
           let url = window.location.href;
-          const tokens = url.split('/');
-          let resUrl  = "";
-          for (i = 3; i < tokens.length - 1; i++)
-          {
+          const tokens = url.split("/");
+          let resUrl = "";
+          for (i = 3; i < tokens.length - 1; i++) {
             resUrl = resUrl + "/" + tokens[i];
           }
           resUrl += "/checkout";
@@ -149,12 +152,11 @@
         }
       }
 
-      function backEvent(){
+      function backEvent() {
         const url = window.location.href;
-        const tokens = url.split('/');
+        const tokens = url.split("/");
         let resUrl = "";
-        for (i = 3; i < tokens.length - 1; i++)
-        {
+        for (i = 3; i < tokens.length - 1; i++) {
           resUrl = resUrl + "/" + tokens[i];
         }
         window.location.href = resUrl;

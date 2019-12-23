@@ -1,6 +1,6 @@
 .main-section {
   margin: auto;
-  height: 700px !important;
+  height: 700px wrap !important;
   width: 85% !important;
   border: 1px solid !important;
 }
@@ -136,9 +136,20 @@
   height: 400px;
   overflow-y: auto;
 }
-.total-price {
+/* .total-price {
   widows: 30%;
   height: fit-content;
+} */
+
+/* Bill Detail View */
+#bill-detail-list {
+  height: 80%;
+  overflow-y: auto;
+}
+/* Product List Admin */
+#product-list-admin {
+  height: 500px;
+  overflow-y: auto;
 }
 
 /* custom card hover */

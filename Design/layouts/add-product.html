@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="../asset/css/style.css" />
+    <title>Order</title>
+  </head>
+  <body>
+    <!-- Login Choice -->
+    <main>
+      <div class="card main-section my-4">
+        <div class="card-header bg-success text-white">
+          <h4>
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+          </h4>
+        </div>
+        <!-- Card Main Content -->
+        <div class="card-body row justify-content-center">
+          <div class="col-md-6">
+            <h1 class="display-4 text-center mb-4">Add Product</h1>
+
+            <!-- Name -->
+            <div class="mb-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name..."
+                class="form-control border-success"
+              />
+            </div>
+            <!-- SDT -->
+            <div class="input-group mb-4">
+              <input
+                type="number"
+                name="price"
+                placeholder="Price..."
+                class="form-control border-success"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text border-success">
+                  <i class="fas fa-dollar-sign    "></i>
+                </div>
+              </div>
+            </div>
+            <!-- Category -->
+            <div class="input-group">
+              <div class="mb-4">
+                <input
+                  id="addressID"
+                  type="text"
+                  name="category"
+                  placeholder="Category..."
+                  class="form-control"
+                />
+              </div>
+              <div class="custom-file ml-3">
+                <input
+                  type="file"
+                  id="prodImage"
+                  class="custom-file-input"
+                  name="image"
+                />
+                <label class="custom-file-label" for="myfile"
+                  >Choose file</label
+                >
+              </div>
+            </div>
+
+            <!-- Provide Company -->
+            <div class="mb-4">
+              <input
+                id="addressID"
+                type="text"
+                name="company"
+                placeholder="company..."
+                class="form-control"
+              />
+            </div>
+            <!-- Discount and DesCript -->
+            <div class="form-group">
+              <label for="message">Description And Discount</label>
+              <textarea
+                class="form-control"
+                id="description"
+                rows="5"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <div class="mr-2">
+              <a href="usecase-choice.html" class="btn btn-secondary text-white"
+                >Back</a
+              >
+            </div>
+
+            <div>
+              <a href="./login-assist.html" class="btn btn-success">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../asset/js/jquery.js"></script>
+    <script src="../asset/js/order.js"></script>
+    <script></script>
+  </body>
+</html>
