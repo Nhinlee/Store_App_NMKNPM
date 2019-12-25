@@ -61,5 +61,40 @@ module.exports = {
         res.send({res: 0});
         next(e);
       }
+    },
+    getStatistic: async function(req, res, next){
+      const startDate = new Date(req.query.startDate);
+      const now =  new Date();
+      const endDate = new Date (req.query.endDate);
+      endDate.setDate(endDate.getDate() + 1);
+      console.log(startDate.toGMTString());
+      console.log(endDate.toGMTString());
+      if (endDate <= now){
+        const bills = await billDB.find({createOn: {$gte: startDate, $lte: endDate}}).sort({createOn: 1});
+        let customerNames = null;
+        let totalPrice = 0;
+        if (bills != null)
+        {
+            customerNames = [];
+            for (i = 0; i < bills.length; i++)
+            {
+                const customer = await customerDB.findById(bills[i].customerId);
+                customerNames.push(customer.fullname);
+                totalPrice += bills[i].totalPrice;
+            }
+        }
+        const result = {bills: bills, customerNames: customerNames, totalPrice: totalPrice, success: true};
+        res.json(result);
+      }
+      else
+      {
+        res.send({success: false, message: "Lỗi: Chưa hết ngày " + now.toLocaleDateString()});
+      }
+    },
+    removeProduct: async function(req, res, next){
+      const productId = req.query.id;
+      if (productId === undefined)
+        return;
+      await productDB.deleteOne({_id: productId});
     } 
 }

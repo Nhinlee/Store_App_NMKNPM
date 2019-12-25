@@ -6,6 +6,17 @@ const passport = require('../config/passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
+  if (req.isAuthenticated())
+  {
+    if (req.user.role == "admin")
+      res.redirect('/admin');
+    else
+    {
+      if (req.user.role == "employee")
+        res.redirect('/employee');
+    }
+  }
   let erro = req.query.erro;
   if (erro === undefined)
     erro = 0;

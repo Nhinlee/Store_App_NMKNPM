@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="../asset/css/style.css" />
+    <title>Order</title>
+  </head>
+  <body>
+    <!-- Login Choice -->
+    <main>
+      <div class="card main-section my-4">
+        <div class="card-header bg-success text-white">
+          <h4>
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+          </h4>
+        </div>
+        <!-- Card Main Content -->
+        <div class="card-body row justify-content-center">
+          <div class="col-md-9">
+            <h1 class="display-4 text-center">Bill Detail</h1>
+            <div class="row">
+              <!-- Customer Information -->
+              <div class="col-md-6">
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <p class="m-auto">
+                      <strong>Full Name: </strong> <%= customer.fullname %>
+                    </p>
+                  </div>
+                  <div class="list-group-item">
+                    <p class="m-auto">
+                      <strong>Email: </strong> <%= customer.email %>
+                    </p>
+                  </div>
+                  <div class="list-group-item">
+                    <p class="m-auto"><strong>Phone: </strong> <%= customer.phone %></p>
+                  </div>
+                  <div class="list-group-item">
+                    <p class="m-auto"><strong>Gender: </strong> <%= gender%></p>
+                  </div>
+                  <div class="list-group-item">
+                    <p class="m-auto">
+                      <strong>Birth Day: </strong> <%= customer.dob%>
+                    </p>
+                  </div>
+                  <div class="list-group-item">
+                    <p class="m-auto"><strong>Address: </strong> <%= customer.address%></p>
+                  </div>
+                  <div class="list-group-item">
+                    <button class="btn btn-success">Contact Email</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Ordered List -->
+              <div class="col-md-6">
+                <!-- Bill history -->
+                <div id="bill-detail-list">
+                  <!-- Item -->
+                  <% for (i = 0; i < billList.length; i++) {%>
+                    <div class="item clearfix">
+                      <div class="item-product-title">
+                        <%= billList[i].productName%>
+                      </div>
+                      <div class="right clearfix">
+                        <div class="item-value"><%= billList[i].productPrice%></div>
+                        <div class="item-number bg-success text-white">
+                          <strong><%= billList[i].quantity%></strong>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                </div>
+                <div class="text-center mt-2">
+                  <h4 id="total-price display-4">
+                    <strong>Total price:</strong> <%= totalPrice%> VNĐ
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <div class="mr-2">
+              <a onclick="return backEvent();" class="btn btn-secondary text-white"
+                >Back</a
+              >
+            </div>
+
+            <div>
+              <a href="./login-assist.html" class="btn btn-success">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../asset/js/jquery.js"></script>
+    <script src="../asset/js/order.js"></script>
+    <script>
+      function backEvent() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

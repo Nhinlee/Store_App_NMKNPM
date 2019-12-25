@@ -1,5 +1,6 @@
 const productTypeDB = require('../models/productType');
 const billDB = require('../models/bill');
+const billDetailDB = require('../models/bill-detail');
 const customerDB = require('../models/customer');
 
 
@@ -105,5 +106,34 @@ module.exports = {
         }
         else
             res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+    },
+    getBillDetail: async function (req, res, next){
+        const id = req.query.id;
+        if (id === undefined){
+            res.send({message: "Không tìm thấy hoá đơn!"});
+        }
+        else{
+            const billList = await billDetailDB.find({billId: id});
+            const bill = await billDB.findById(id);
+            const customer = await customerDB.findById(bill.customerId);
+
+            if (billList != null && bill != null && customer != null){
+                let gender;
+                if (customer.gender == 0)
+                    gender = "Male";
+                else
+                    gender = "Female";
+
+                res.render('pages/bill-detail',{
+                    customer: customer,
+                    billList: billList,
+                    totalPrice: formatMoney(bill.totalPrice),
+                    gender: gender
+                })
+            }
+            else{
+                res.send({message: "Không tìm thấy hoá đơn!"});
+            }
+        }
     }
 }

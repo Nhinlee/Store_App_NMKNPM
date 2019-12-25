@@ -18,4 +18,8 @@ router.get('/history-inday', function(req, res, next) {
     employeeController.getHistoryInday(req, res, next);
 });
 
+router.get('/bill-detail', function(req, res, next) {
+    employeeController.getBillDetail(req, res, next);
+});
+
 module.exports = router;

@@ -70,7 +70,7 @@
                       <td><%= formatMoney(bills[i].totalPrice) %> VNĐ</td>
                       <td><%= bills[i].createOn.toLocaleString() %></td>
                       <td>
-                        <button id="<%= bills[i]._id %>" class="btn btn-success mr-2">Detail</button>
+                        <button onclick="return getDetail(this);" id="<%= bills[i]._id %>" class="btn btn-success mr-2">Detail</button>
                       </td>
                     </tr>
                   <% } %>
@@ -129,6 +129,16 @@
           resUrl = resUrl + "/" + tokens[i];
         }
         window.location.href = resUrl;
+      }
+      function getDetail(tag){
+        const url = window.location.href;
+        const tokens = url.split('/');
+        let resUrl = "";
+        for (i = 3; i < tokens.length - 1; i++)
+        {
+          resUrl = resUrl + "/" + tokens[i];
+        }
+        window.location.href = resUrl + "/bill-detail?id=" + tag.id;
       }
     </script>
 
