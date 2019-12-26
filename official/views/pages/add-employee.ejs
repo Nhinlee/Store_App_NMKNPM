@@ -32,113 +32,125 @@
       <div class="card main-section my-4">
         <div class="card-header bg-success text-white">
           <h4>
-            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Add Employees
           </h4>
         </div>
         <!-- Card Main Content -->
         <div class="card-body row justify-content-center text-center">
           <div class="col-md-6">
             <h1 class="display-4 text-center mb-4">Add Employees</h1>
-            <form onsubmit="return checkEmpty();" name="addForm" method="POST" class="form-group my-4">
+            <form
+              onsubmit="return checkEmpty();"
+              name="addForm"
+              method="POST"
+              class="form-group my-4"
+            >
+              <div class="mb-4">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username..."
+                  class="form-control"
+                />
+              </div>
+              <div class="input-group">
+                <!-- Password -->
                 <div class="mb-4">
                   <input
-                    type="text"
-                    name="username"
-                    placeholder="Username..."
+                    type="password"
+                    name="password"
+                    placeholder="password..."
                     class="form-control"
                   />
                 </div>
-                <div class="input-group">
-                  <!-- Password -->
-                  <div class="mb-4">
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="password..."
-                      class="form-control"
-                    />
-                  </div>
-                  <!-- Password -->
-                  <div class="mb-4 ml-auto">
-                    <input
-                      type="password"
-                      name="passConfirm"
-                      placeholder="confirm password..."
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-                <!-- Name -->
-                <div class="mb-4">
+                <!-- Password -->
+                <div class="mb-4 ml-auto">
                   <input
-                    id="fullnameID"
-                    type="text"
-                    name="fullname"
-                    placeholder="Full Name..."
+                    type="password"
+                    name="passConfirm"
+                    placeholder="confirm password..."
                     class="form-control"
                   />
                 </div>
-                <!-- SDT -->
-                <div class="mb-4">
+              </div>
+              <!-- Name -->
+              <div class="mb-4">
+                <input
+                  id="fullnameID"
+                  type="text"
+                  name="fullname"
+                  placeholder="Full Name..."
+                  class="form-control"
+                />
+              </div>
+              <!-- SDT -->
+              <div class="mb-4">
+                <input
+                  id="emailID"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  class="form-control"
+                />
+              </div>
+              <!-- SDT -->
+              <div class="mb-4">
+                <input
+                  id="phoneID"
+                  type="text"
+                  name="phone"
+                  placeholder="Phone number..."
+                  class="form-control"
+                />
+              </div>
+              <!-- BirthDate + Gender -->
+              <div class="input-group">
+                <div class="mb-4 input-group-item">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
+                    >Preference</label
+                  >
+                  <select
+                    id="genderID"
+                    class="custom-select mr-sm-2"
+                    name="gender"
+                  >
+                    <option value="0" selected="">Male</option>
+                    <option value="1">Female</option>
+                    <option value="2">Else...</option>
+                  </select>
+                </div>
+                <div class="mb-2 ml-auto input-group-item">
                   <input
-                    id="emailID"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
+                    id="dobID"
+                    type="date"
+                    name="dob"
                     class="form-control"
                   />
                 </div>
-                <!-- SDT -->
-                <div class="mb-4">
-                  <input
-                    id="phoneID"
-                    type="text"
-                    name="phone"
-                    placeholder="Phone number..."
-                    class="form-control"
-                  />
-                </div>
-                <!-- BirthDate + Gender -->
-                <div class="input-group">
-                  <div class="mb-4 input-group-item">
-                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                      >Preference</label
-                    >
-                    <select
-                      id="genderID"
-                      class="custom-select mr-sm-2"
-                      name="gender"
-                    >
-                      <option value="0" selected="">Male</option>
-                      <option value="1">Female</option>
-                      <option value="2">Else...</option>
-                    </select>
-                  </div>
-                  <div class="mb-2 ml-auto input-group-item">
-                    <input id="dobID" type="date" name="dob" class="form-control" />
-                  </div>
-                </div>
-                <!-- Address -->
-                <div class="mb-2">
-                  <input
-                    id="addressID"
-                    type="text"
-                    name="address"
-                    placeholder="Address..."
-                    class="form-control"
-                  />
-                </div>
+              </div>
+              <!-- Address -->
+              <div class="mb-2">
+                <input
+                  id="addressID"
+                  type="text"
+                  name="address"
+                  placeholder="Address..."
+                  class="form-control"
+                />
+              </div>
 
-                <button type="submit" class="btn btn-success mt-5">
-                  Add
-                </button>
+              <button type="submit" class="btn btn-success mt-5">
+                Add
+              </button>
             </form>
           </div>
         </div>
         <div class="card-footer">
           <div class="d-flex justify-content-end">
             <div class="mr-2">
-              <a onclick="return backEvent();" class="btn btn-secondary text-white"
+              <a
+                onclick="return backEvent();"
+                class="btn btn-secondary text-white"
                 >Back</a
               >
             </div>
@@ -170,39 +182,39 @@
     <script src="../asset/js/jquery.js"></script>
     <script src="../asset/js/order.js"></script>
     <script>
-      const error = <%= error%>;
-      if (error == 0)
-        alert('Thêm nhân viên thành công!');
-      if (error == 1)
-        alert('Tên tài khoản đã tồn tại!');
-      if (error == 2)
-        alert('Mật khẩu không khớp nhau!');
-      
-      function checkEmpty(){
+      if (error == 0) alert("Thêm nhân viên thành công!");
+      if (error == 1) alert("Tên tài khoản đã tồn tại!");
+      if (error == 2) alert("Mật khẩu không khớp nhau!");
+
+      function checkEmpty() {
         const fullname = document.forms["addForm"]["fullname"].value;
         const username = document.forms["addForm"]["username"].value;
         const phone = document.forms["addForm"]["email"].value;
         const address = document.forms["addForm"]["address"].value;
         const dob = document.forms["addForm"]["dob"].value;
 
-        if (fullname != "" && username != ""  && phone != "" && address != "" && dob != ""){
+        if (
+          fullname != "" &&
+          username != "" &&
+          phone != "" &&
+          address != "" &&
+          dob != ""
+        ) {
           return true;
-        }
-        else
-        {
-          alert('Lỗi: Thông tin rỗng!');
+        } else {
+          alert("Lỗi: Thông tin rỗng!");
           return false;
         }
       }
 
       function backEvent() {
-          const url = window.location.href;
-          const tokens = url.split("/");
-          let resUrl = "";
-          for (i = 3; i < tokens.length - 1; i++) {
-            resUrl = resUrl + "/" + tokens[i];
-          }
-          window.location.href = resUrl;
+        const url = window.location.href;
+        const tokens = url.split("/");
+        let resUrl = "";
+        for (i = 3; i < tokens.length - 1; i++) {
+          resUrl = resUrl + "/" + tokens[i];
+        }
+        window.location.href = resUrl;
       }
     </script>
   </body>

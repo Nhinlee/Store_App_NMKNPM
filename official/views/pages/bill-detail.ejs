@@ -24,7 +24,7 @@
 
     <!-- Custom style -->
     <link rel="stylesheet" href="../asset/css/style.css" />
-    <title>Order</title>
+    <title>Bill Detail</title>
   </head>
   <body>
     <!-- Login Choice -->
@@ -32,7 +32,7 @@
       <div class="card main-section my-4">
         <div class="card-header bg-success text-white">
           <h4>
-            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Bill Details
           </h4>
         </div>
         <!-- Card Main Content -->
@@ -54,7 +54,9 @@
                     </p>
                   </div>
                   <div class="list-group-item">
-                    <p class="m-auto"><strong>Phone: </strong> <%= customer.phone %></p>
+                    <p class="m-auto">
+                      <strong>Phone: </strong> <%= customer.phone %>
+                    </p>
                   </div>
                   <div class="list-group-item">
                     <p class="m-auto"><strong>Gender: </strong> <%= gender%></p>
@@ -65,7 +67,9 @@
                     </p>
                   </div>
                   <div class="list-group-item">
-                    <p class="m-auto"><strong>Address: </strong> <%= customer.address%></p>
+                    <p class="m-auto">
+                      <strong>Address: </strong> <%= customer.address%>
+                    </p>
                   </div>
                   <div class="list-group-item">
                     <button class="btn btn-success">Contact Email</button>
@@ -78,17 +82,19 @@
                 <div id="bill-detail-list">
                   <!-- Item -->
                   <% for (i = 0; i < billList.length; i++) {%>
-                    <div class="item clearfix">
-                      <div class="item-product-title">
-                        <%= billList[i].productName%>
+                  <div class="item clearfix">
+                    <div class="item-product-title">
+                      <%= billList[i].productName%>
+                    </div>
+                    <div class="right clearfix">
+                      <div class="item-value">
+                        <%= billList[i].productPrice%>
                       </div>
-                      <div class="right clearfix">
-                        <div class="item-value"><%= billList[i].productPrice%></div>
-                        <div class="item-number bg-success text-white">
-                          <strong><%= billList[i].quantity%></strong>
-                        </div>
+                      <div class="item-number bg-success text-white">
+                        <strong><%= billList[i].quantity%></strong>
                       </div>
                     </div>
+                  </div>
                   <% } %>
                 </div>
                 <div class="text-center mt-2">
@@ -103,7 +109,9 @@
         <div class="card-footer">
           <div class="d-flex justify-content-end">
             <div class="mr-2">
-              <a onclick="return backEvent();" class="btn btn-secondary text-white"
+              <a
+                onclick="return backEvent();"
+                class="btn btn-secondary text-white"
                 >Back</a
               >
             </div>

@@ -25,7 +25,7 @@
     <!-- Custom style -->
     <link rel="stylesheet" href="../asset/css/style.css" />
 
-    <title>User Checkout</title>
+    <title>Statistic</title>
   </head>
   <body>
     <!-- Login Choice -->
@@ -50,18 +50,21 @@
                     <th scope="col"></th>
                   </tr>
                 </thead>
-                <tbody id="body">
-              
-                </tbody>
+                <tbody id="body"></tbody>
               </table>
             </div>
 
             <!-- Total Price In This Day -->
             <div class="d-flex justify-content-end">
               <div class="total-price d-inline p-3 mr-auto">
-                <form onsubmit="getStatistic(); return false;" >
+                <form onsubmit="getStatistic(); return false;">
                   <div class="input-group">
-                    <input id="startDate" type="date" class="form-control" name="begin" />
+                    <input
+                      id="startDate"
+                      type="date"
+                      class="form-control"
+                      name="begin"
+                    />
                     <div class="py-2 px-4">
                       <i
                         class="fa fa-arrow-circle-right fa-lg"
@@ -69,7 +72,12 @@
                       ></i>
                     </div>
 
-                    <input id="endDate" type="date" class="form-control" name="end" />
+                    <input
+                      id="endDate"
+                      type="date"
+                      class="form-control"
+                      name="end"
+                    />
                     <button class="btn btn-outline-success ml-2" type="submit">
                       Sort
                     </button>
@@ -85,7 +93,9 @@
         <div class="card-footer">
           <div class="d-flex justify-content-end">
             <div class="mr-2">
-              <a onclick="return window.history.back();" class="btn btn-secondary text-white"
+              <a
+                onclick="return window.history.back();"
+                class="btn btn-secondary text-white"
                 >Back</a
               >
             </div>
@@ -116,62 +126,87 @@
     ></script>
 
     <script>
-      if (document.getElementById('startDate').value != "" && document.getElementById('endDate').value != "") getStatistic();
+      if (
+        document.getElementById("startDate").value != "" &&
+        document.getElementById("endDate").value != ""
+      )
+        getStatistic();
 
-      function addRow(num, customerName, billTotal, createOn, rowNum, billId){
-        const table = document.getElementById('mytable').getElementsByTagName('tbody')[0];
+      function addRow(num, customerName, billTotal, createOn, rowNum, billId) {
+        const table = document
+          .getElementById("mytable")
+          .getElementsByTagName("tbody")[0];
         const row = table.insertRow(rowNum);
-        row.innerHTML = '<th scope="row">' + num + '</th> <td>' + customerName + '</td><td>' + billTotal + ' VNĐ </td><td>' + createOn + '</td><td> <button onclick="return getDetail(this);" id="'+ billId + '" class="btn btn-success mr-2">Detail</button> <button class="btn btn-danger">Delete</button> </td>';
+        row.innerHTML =
+          '<th scope="row">' +
+          num +
+          "</th> <td>" +
+          customerName +
+          "</td><td>" +
+          billTotal +
+          " VNĐ </td><td>" +
+          createOn +
+          '</td><td> <button onclick="return getDetail(this);" id="' +
+          billId +
+          '" class="btn btn-success mr-2">Detail</button> <button class="btn btn-danger">Delete</button> </td>';
       }
-      async function getStatistic(){
-        const startDate = document.getElementById('startDate').value;
-        const endDate = document.getElementById('endDate').value;
+      async function getStatistic() {
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
 
-        if (startDate == "" || endDate == "")
-        {
-          alert('Lỗi ngày còn trống!');
+        if (startDate == "" || endDate == "") {
+          alert("Lỗi ngày còn trống!");
           return false;
-        }
-        else{
-          const response = await fetch("http://localhost:3000/api/statistic?startDate=" + startDate + "&endDate=" + endDate);
+        } else {
+          const response = await fetch(
+            "http://localhost:3000/api/statistic?startDate=" +
+              startDate +
+              "&endDate=" +
+              endDate
+          );
           const data = await response.json();
-          if (data.success){
-            const tableBody = document.getElementById('body');
+          if (data.success) {
+            const tableBody = document.getElementById("body");
             tableBody.innerHTML = "";
             let currentRow = 0;
-            for (i = 0; i < data.bills.length; i++){
+            for (i = 0; i < data.bills.length; i++) {
               const bill = data.bills[i];
               const dateCreated = new Date(bill.createOn);
-              addRow(i + 1, data.customerNames[i], formatMoney(bill.totalPrice), dateCreated.toLocaleString(), currentRow, bill._id);
+              addRow(
+                i + 1,
+                data.customerNames[i],
+                formatMoney(bill.totalPrice),
+                dateCreated.toLocaleString(),
+                currentRow,
+                bill._id
+              );
               currentRow++;
             }
-            document.getElementById('totalPrice').innerText = "Total Price: " + formatMoney(data.totalPrice) + " VNĐ";
-          }
-          else
-          {
+            document.getElementById("totalPrice").innerText =
+              "Total Price: " + formatMoney(data.totalPrice) + " VNĐ";
+          } else {
             alert(data.message);
             return false;
           }
         }
       }
       function formatMoney(money) {
-          money = money.toString();
-          var format = "";
-          let i = money.length,
-              k = 0;
-          while (i-- > 0) {
-              format = money[i] + format;
-              k++;
-              if (k % 3 === 0 && i != 0) format = "." + format;
-          }
-          return format;
-      };
-      function getDetail(tag){
+        money = money.toString();
+        var format = "";
+        let i = money.length,
+          k = 0;
+        while (i-- > 0) {
+          format = money[i] + format;
+          k++;
+          if (k % 3 === 0 && i != 0) format = "." + format;
+        }
+        return format;
+      }
+      function getDetail(tag) {
         const url = window.location.href;
-        const tokens = url.split('/');
+        const tokens = url.split("/");
         let resUrl = "";
-        for (i = 3; i < tokens.length - 1; i++)
-        {
+        for (i = 3; i < tokens.length - 1; i++) {
           resUrl = resUrl + "/" + tokens[i];
         }
         window.location.href = resUrl + "/bill-detail?id=" + tag.id;

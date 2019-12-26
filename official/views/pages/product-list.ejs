@@ -25,7 +25,7 @@
     <!-- Custom style -->
     <link rel="stylesheet" href="../asset/css/style.css" />
 
-    <title>User Checkout</title>
+    <title>Product List</title>
   </head>
   <body>
     <!-- Login Choice -->
@@ -33,7 +33,7 @@
       <div class="card main-section my-4 fixed-center">
         <div class="card-header bg-success text-white">
           <h4>
-            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> Product List
           </h4>
         </div>
         <div class="card-body">
@@ -52,31 +52,31 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% function formatMoney(money) {
-                      money = money.toString();
-                      var format = "";
-                      let i = money.length,
-                          k = 0;
-                      while (i-- > 0) {
-                          format = money[i] + format;
-                          k++;
-                          if (k % 3 === 0 && i != 0) format = "." + format;
-                      }
-                      return format;
-                  }; %>
-                    <% for (i = 0; i < productList.length; i++) {%>
-                      <tr>
-                        <th scope="col"><%= (i+1)%></th>
-                        <td scope="col"><%= productList[i].name%></td>
-                        <td scope="col"><%= formatMoney(productList[i].price)%> VNĐ</td>
-                        <td scope="col"><%= productList[i].quantity%></td>
-                        <td scope="col">
-                          <button onclick="removeProduct(this); setTimeout(function(){location.reload();}, 500);" id="<%= productList[i]._id%>" class="btn btn-danger">Delete</button>
-                          <button class="btn btn-primary">
-                            <i class="fas fa-edit    "></i>
-                          </button>
-                        </td>
-                      </tr>
+                    <% function formatMoney(money) { money = money.toString();
+                    var format = ""; let i = money.length, k = 0; while (i-- >
+                    0) { format = money[i] + format; k++; if (k % 3 === 0 && i
+                    != 0) format = "." + format; } return format; }; %> <% for
+                    (i = 0; i < productList.length; i++) {%>
+                    <tr>
+                      <th scope="col"><%= (i+1)%></th>
+                      <td scope="col"><%= productList[i].name%></td>
+                      <td scope="col">
+                        <%= formatMoney(productList[i].price)%> VNĐ
+                      </td>
+                      <td scope="col"><%= productList[i].quantity%></td>
+                      <td scope="col">
+                        <button
+                          onclick="removeProduct(this); setTimeout(function(){location.reload();}, 500);"
+                          id="<%= productList[i]._id%>"
+                          class="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                        <button class="btn btn-primary">
+                          <i class="fas fa-edit    "></i>
+                        </button>
+                      </td>
+                    </tr>
                     <% } %>
                   </tbody>
                 </table>
@@ -88,7 +88,9 @@
           <div class="d-flex justify-content-end">
             <!-- search bar -->
             <div class="mr-2">
-              <a onclick="return backEvent();" class="btn btn-secondary text-white"
+              <a
+                onclick="return backEvent();"
+                class="btn btn-secondary text-white"
                 >Back</a
               >
             </div>
@@ -119,22 +121,24 @@
     ></script>
 
     <script>
-        function backEvent() {
-          const url = window.location.href;
-          const tokens = url.split("/");
-          let resUrl = "";
-          for (i = 3; i < tokens.length - 1; i++) {
-            resUrl = resUrl + "/" + tokens[i];
-          }
-          window.location.href = resUrl;
+      function backEvent() {
+        const url = window.location.href;
+        const tokens = url.split("/");
+        let resUrl = "";
+        for (i = 3; i < tokens.length - 1; i++) {
+          resUrl = resUrl + "/" + tokens[i];
         }
-        async function removeProduct(tag){
-          let r = confirm("Bạn có chắc chắn xoá sản phẩm này?");
-          if (r == true){
-            const response = await fetch("http://localhost:3000/api/remove-product?id=" + tag.id);
-            location.reload();
-          }
+        window.location.href = resUrl;
+      }
+      async function removeProduct(tag) {
+        let r = confirm("Bạn có chắc chắn xoá sản phẩm này?");
+        if (r == true) {
+          const response = await fetch(
+            "http://localhost:3000/api/remove-product?id=" + tag.id
+          );
+          location.reload();
         }
+      }
     </script>
   </body>
 </html>

@@ -33,7 +33,7 @@
       <div class="card main-section my-4 fixed-center">
         <div class="card-header bg-success text-white">
           <h4>
-            <i class="fa fa-user-circle" aria-hi dden="true"></i> Employees
+            <i class="fa fa-user-circle" aria-hi dden="true"></i> History Today
           </h4>
         </div>
         <div class="card-body">
@@ -51,28 +51,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% function formatMoney(money) {
-                        money = money.toString();
-                        var format = "";
-                        let i = money.length,
-                            k = 0;
-                        while (i-- > 0) {
-                            format = money[i] + format;
-                            k++;
-                            if (k % 3 === 0 && i != 0) format = "." + format;
-                        }
-                        return format;
-                  } %>
-                  <% for (i = 0; i < bills.length; i++) {%>
-                    <tr>
-                      <th scope="row"><%= (i+1) %></th>
-                      <td><%= customerNames[i] %></td>
-                      <td><%= formatMoney(bills[i].totalPrice) %> VNĐ</td>
-                      <td><%= bills[i].createOn.toLocaleString() %></td>
-                      <td>
-                        <button onclick="return getDetail(this);" id="<%= bills[i]._id %>" class="btn btn-success mr-2">Detail</button>
-                      </td>
-                    </tr>
+                  <% function formatMoney(money) { money = money.toString(); var
+                  format = ""; let i = money.length, k = 0; while (i-- > 0) {
+                  format = money[i] + format; k++; if (k % 3 === 0 && i != 0)
+                  format = "." + format; } return format; } %> <% for (i = 0; i
+                  < bills.length; i++) {%>
+                  <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= customerNames[i] %></td>
+                    <td><%= formatMoney(bills[i].totalPrice) %> VNĐ</td>
+                    <td><%= bills[i].createOn.toLocaleString() %></td>
+                    <td>
+                      <button
+                        onclick="return getDetail(this);"
+                        id="<%= bills[i]._id %>"
+                        class="btn btn-success mr-2"
+                      >
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
                   <% } %>
                 </tbody>
               </table>
@@ -89,7 +87,9 @@
         <div class="card-footer">
           <div class="d-flex justify-content-end">
             <div class="mr-2">
-              <a onclick="return backEvent()" class="btn btn-secondary text-white"
+              <a
+                onclick="return backEvent()"
+                class="btn btn-secondary text-white"
                 >Back</a
               >
             </div>
@@ -120,27 +120,24 @@
     ></script>
 
     <script>
-      function backEvent(){
+      function backEvent() {
         const url = window.location.href;
-        const tokens = url.split('/');
+        const tokens = url.split("/");
         let resUrl = "";
-        for (i = 3; i < tokens.length - 1; i++)
-        {
+        for (i = 3; i < tokens.length - 1; i++) {
           resUrl = resUrl + "/" + tokens[i];
         }
         window.location.href = resUrl;
       }
-      function getDetail(tag){
+      function getDetail(tag) {
         const url = window.location.href;
-        const tokens = url.split('/');
+        const tokens = url.split("/");
         let resUrl = "";
-        for (i = 3; i < tokens.length - 1; i++)
-        {
+        for (i = 3; i < tokens.length - 1; i++) {
           resUrl = resUrl + "/" + tokens[i];
         }
         window.location.href = resUrl + "/bill-detail?id=" + tag.id;
       }
     </script>
-
   </body>
 </html>

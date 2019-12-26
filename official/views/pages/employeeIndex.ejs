@@ -45,43 +45,43 @@
             <div class="row">
               <!-- History Card -->
               <div class="col-md-6">
-                <a href="/employee/history-inday">
-                  <div
-                    id="history-card"
-                    class="card text-white bg-success text-center mt-4 choice-card"
-                  >
-                    <div class="card-body">
-                      <h1 class="display-2">
-                        <i class="fa fa-history" aria-hidden="true"></i>
-                      </h1>
-                      <h1 class="display-2">
-                        History
-                      </h1>
-                      <p class="lead">click to views bill history</p>
-                    </div>
+                <!-- <a href="/employee/history-inday"> -->
+                <div
+                  id="history-card"
+                  class="card text-white bg-success text-center mt-4 choice-card"
+                >
+                  <div class="card-body">
+                    <h1 class="display-2">
+                      <i class="fa fa-history" aria-hidden="true"></i>
+                    </h1>
+                    <h1 class="display-2">
+                      History
+                    </h1>
+                    <p class="lead">click to views bill history</p>
                   </div>
-                </a>
+                </div>
+                <!-- </a> -->
               </div>
               <!-- Order Card -->
               <div class="col-md-6">
-                <a href="/employee/order">
-                  <div
-                    id="order-card"
-                    class="card text-white bg-success text-center mt-4 choice-card"
-                  >
-                    <div class="card-body">
-                      <h1 class="display-2">
-                        <i class="fab fa-first-order-alt"></i>
-                      </h1>
-                      <h1 class="display-2">
-                        Order
-                      </h1>
-                      <p class="lead">
-                        click to views product list and order for customer
-                      </p>
-                    </div>
+                <!-- <a href="/employee/order"> -->
+                <div
+                  id="order-card"
+                  class="card text-white bg-success text-center mt-4 choice-card"
+                >
+                  <div class="card-body">
+                    <h1 class="display-2">
+                      <i class="fab fa-first-order-alt"></i>
+                    </h1>
+                    <h1 class="display-2">
+                      Order
+                    </h1>
+                    <p class="lead">
+                      click to views product list and order for customer
+                    </p>
                   </div>
-                </a>
+                </div>
+                <!-- </a> -->
               </div>
             </div>
           </div>
@@ -113,6 +113,14 @@
       crossorigin="anonymous"
     ></script>
     <script src="../asset/js/jquery.js"></script>
-    <script></script>
+    <script>
+      // Employee Click:
+      $("#history-card").click(() => {
+        window.location.assign("/employee/history-inday");
+      });
+      $("#order-card").click(() => {
+        window.location.assign("/employee/order");
+      });
+    </script>
   </body>
 </html>

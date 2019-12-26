@@ -28,27 +28,37 @@ var ProdController = (function() {
       const index = data.orders.list.findIndex(e => {
         return e._id === prodId;
       });
-      console.log("index: ", index);
       // 2.Add product in orders list:
       if (index === -1) {
         const product = data.products.find(e => e._id === prodId);
-        console.log(product);
         product.number = 1;
         data.orders.list.push(product);
       } else data.orders.list[index].number += 1;
       // 3.Calculate totalprice again:
       calctotalPrice();
-      // 4.Return new item if it neccessary
+      // 4.Des Quantity of this product in products:
+      data.products.forEach(e => {
+        if (e._id === prodId && e.quantity > 0) {
+          e.quantity -= 1;
+        }
+      });
     },
 
-    DelItem: function(prodId) {
+    DelItem: function(prodId, amount) {
       //1.Delete product with prodId in current orders list:
       const index = data.orders.list.findIndex(e => {
-        return e.title === prodId;
+        return e._id === prodId;
       });
       data.orders.list.splice(index, 1);
       // 2.Calc total price again:
       calctotalPrice();
+      // 3.Add quantity of this Product in Product List:
+      data.products.forEach(e => {
+        if (e._id === prodId) {
+          e.quantity += amount;
+          console.log(e);
+        }
+      });
     },
 
     getOrderList: function() {
@@ -111,7 +121,7 @@ var UIController = (function() {
       // Display product list:
       list.forEach(e => {
         $("#product-list-section").append(` <div class="col-md-4 mb-2">
-        <div class="card">
+        <div class="card" id = "${e._id}">
           <img
             src="${e.image}"
             alt="product-img"
@@ -123,8 +133,10 @@ var UIController = (function() {
               ${e.name}
             </h4>
             <p class ="d-none card-product-id">${e._id}</p>
-            <p class="mute card-product-price">${FormatMoney(e.price)} VND</p>
-            <a href="#" class="btn btn-success btn-sm"> details</a>
+            <p class="mute card-product-price">${FormatMoney(e.price)} VND </p>
+            <div class="btn btn-success btn-sm card-product-quantity"> ${
+              e.quantity
+            }</div>
             <button class="btn btn-success btn-sm add-button">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
@@ -138,9 +150,10 @@ var UIController = (function() {
       $("#order-list").empty();
       // Display order list:
       list.forEach(e => {
-        $("#order-list").append(`<div class="item clearfix" id="item-0">
+        $("#order-list").append(`<div class="item clearfix">
                           <div class="item-product-title">${e.name}</div>
                           <div class="right clearfix">
+                              <div class="item-id d-none">${e._id}</div>
                               <div class="item-value">${FormatMoney(
                                 e.price
                               )} VND</div>
@@ -157,6 +170,44 @@ var UIController = (function() {
         .children("p", "#total-price")
         .html(`<strong>Total price:</strong> ${FormatMoney(total)} VND`);
     },
+
+    addSpinners: function() {
+      $(DOM.product_list_section)
+        .append(`<div class="spinner-grow text-success" style="width: 5rem; height: 5rem;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>`);
+    },
+
+    removeSpinners: function() {
+      $(".spinner-grow").remove();
+    },
+
+    desProd: function(obj) {
+      const quantityDom = obj.siblings(".card-product-quantity");
+      let quantity = quantityDom.text() - 1;
+      quantityDom.text(`${quantity}`);
+      if (quantity === 0) {
+        obj.remove();
+        quantityDom.removeClass("btn-success");
+        quantityDom.addClass("btn-danger");
+      }
+    },
+
+    incProd: function(prodId, amount) {
+      const quantityDom = $(`#${prodId}`).find(".card-product-quantity");
+      if (quantityDom.text() === "0") {
+        quantityDom.removeClass("btn-danger");
+        quantityDom.addClass("btn-success");
+        quantityDom.after(`
+        <button class="btn btn-success btn-sm add-button">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      `);
+      }
+      let quantity = parseFloat(quantityDom.text()) + amount;
+      quantityDom.text(`${quantity}`);
+    },
+
     getDOM: function() {
       return DOM;
     }
@@ -164,8 +215,8 @@ var UIController = (function() {
 })();
 // Controller Object:
 var Controller = (function(ProdCtr, UICtr) {
+  var DOM = UICtr.getDOM();
   var setupEventListeners = function() {
-    var DOM = UICtr.getDOM();
     // Set add button:
     $(DOM.product_list_section).click(() => {
       if (
@@ -183,8 +234,7 @@ var Controller = (function(ProdCtr, UICtr) {
           $(event.target).attr("class") === "fa fa-plus"
             ? $(event.target).parent()
             : $(event.target);
-        const prodId = obj.siblings(DOM.card_id).text();
-        CtrAddItem(prodId);
+        CtrAddItem(obj);
       }
     });
     // Set delete button:
@@ -199,7 +249,9 @@ var Controller = (function(ProdCtr, UICtr) {
           .toString()
           .search("item__delete--btn") != -1
       ) {
-        CtrlDelItem(event);
+        // 1.Get Dom Item:
+        const obj = $(event.target).parents(".item");
+        CtrlDelItem(obj);
       }
     });
     $(DOM.cat_name).change(() => {
@@ -213,6 +265,8 @@ var Controller = (function(ProdCtr, UICtr) {
   };
 
   var CtrInit = async function() {
+    //Loading Effect:
+    UICtr.addSpinners();
     // Pull product from API:
     await ProdCtr.pullProductList();
     // Get Product List:
@@ -231,12 +285,13 @@ var Controller = (function(ProdCtr, UICtr) {
   var CtrSearchProduct = function(searchKey) {
     // Get product with Search Key:
     const prodList = ProdCtr.getProdSearch(searchKey);
-    console.log(prodList);
     // Display Product on UI:
     UICtr.displayProdList(prodList);
   };
 
-  var CtrAddItem = function(prodId) {
+  var CtrAddItem = function(obj) {
+    // 1.Get prod ID field:
+    const prodId = obj.siblings(DOM.card_id).text();
     // 2.add product into Order list:
     ProdCtr.addItem(prodId);
     // 3.Get list and totalprice of order list:
@@ -244,18 +299,23 @@ var Controller = (function(ProdCtr, UICtr) {
     const total = ProdCtr.getTotalPrice();
     // 4.Display order list:
     UICtr.displayListItem(list, total);
+    // 5.Update Amount of this product on UI:
+    UICtr.desProd(obj);
   };
 
-  var CtrlDelItem = function(event) {
-    // 1.Get Dom Item:
-    const obj = $(event.target).parents(".item");
+  var CtrlDelItem = function(obj) {
+    // Get prod ID field and Amount:
+    const prodId = obj.find(".item-id").text();
+    const amount = parseFloat(obj.find(".item-number").text());
     // 2.Delete item in data orders list:
-    ProdCtr.DelItem(obj.children(".item-product-title").text());
+    ProdCtr.DelItem(prodId, amount);
     // 3.Get list and totalprice of order list:
     const list = ProdCtr.getOrderList();
     const total = ProdCtr.getTotalPrice();
     // 4.Display List Item again:
     UICtr.displayListItem(list, total);
+    // 5.Update Amount of this product on UI:
+    UICtr.incProd(prodId, amount);
   };
 
   return {
