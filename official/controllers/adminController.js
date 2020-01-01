@@ -28,10 +28,10 @@ module.exports = {
                 res.render("pages/adminIndex");
             }
             else
-                res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                res.render('pages/error');
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getOrder:async function (req, res, next){
         if (req.isAuthenticated())
@@ -44,12 +44,12 @@ module.exports = {
             {
                 if (req.user.role == "employee")
                 {   
-                    res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                    res.render('pages/error');
                 }
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getCheckOut: function(req, res, next){
         if (req.isAuthenticated())
@@ -61,12 +61,12 @@ module.exports = {
             {
                 if (req.user.role == "employee")
                 {   
-                    res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                    res.render('pages/error');
                 }
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getHistoryInday: async function(req, res, next){
         if (req.isAuthenticated())
@@ -99,17 +99,17 @@ module.exports = {
             {
                 if (req.user.role == "employee")
                 {   
-                    res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                    res.render('pages/error');
                 }
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getBillDetail: async function (req, res, next){
         if (!req.isAuthenticated())
         {
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
             return;
         }
         const id = req.query.id;
@@ -136,7 +136,7 @@ module.exports = {
                 })
             }
             else{
-                res.send({message: "Không tìm thấy hoá đơn!"});
+                res.render('pages/error');
             }
         }
     },
@@ -149,10 +149,10 @@ module.exports = {
             if (req.user.role == "admin")
                 res.render('pages/add-employee',{error: error});
             else
-                res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                res.render('pages/error');
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
         
     },
     postAddEmployee: async function (req, res, next){
@@ -186,10 +186,10 @@ module.exports = {
                     }
             }
             else
-                res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                res.render('pages/error');
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getProductList: async function (req, res, next){
         if (req.isAuthenticated())
@@ -201,10 +201,10 @@ module.exports = {
                 res.render('pages/product-list',{productList: productList});
             }
             else
-                res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                res.render('pages/error');
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getAddProduct: async function (req, res, next){
         if (req.isAuthenticated())
@@ -218,10 +218,10 @@ module.exports = {
                 res.render('pages/add-product',{productType: productType, error: error});
             }
             else
-                res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+                res.render('pages/error');
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     postAddProduct: async function(req, res, next, id){
         const product = await productDB.findById(id);
@@ -238,6 +238,18 @@ module.exports = {
         product.image = "/image/" + id + ".jpg";
         await product.save();
         res.redirect('/admin/add-product?error=0');
+    },
+    getStatistic: async function(req, res, next){
+        if (req.isAuthenticated()){
+            if (req.user.role == "admin"){
+                res.render('pages/statistic');
+            }
+            else{
+                res.render('pages/error');
+            }
+        }
+        else
+            res.render('pages/error');
     }
     
 }

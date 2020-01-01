@@ -36,7 +36,7 @@ router.get('/product-list', function(req, res, next) {
 });
 
 router.get('/statistics', function(req, res, next) {
-    res.render('pages/statistic');
+   adminController.getStatistic(req, res, next);
 });
 
 router.get('/add-product', function(req, res, next) {

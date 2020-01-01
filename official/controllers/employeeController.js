@@ -31,7 +31,7 @@ module.exports = {
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getOrder:async function (req, res, next){
         if (req.isAuthenticated())
@@ -49,7 +49,7 @@ module.exports = {
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getCheckOut: function(req, res, next){
         if (req.isAuthenticated())
@@ -66,7 +66,7 @@ module.exports = {
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getHistoryInday: async function(req, res, next){
         if (req.isAuthenticated())
@@ -105,7 +105,7 @@ module.exports = {
             }
         }
         else
-            res.send({message: "Bạn không có quyền truy cập vào trang này!"});
+            res.render('pages/error');
     },
     getBillDetail: async function (req, res, next){
         const id = req.query.id;
