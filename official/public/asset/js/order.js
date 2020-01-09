@@ -31,8 +31,11 @@ var ProdController = (function() {
       // 2.Add product in orders list:
       if (index === -1) {
         const product = data.products.find(e => e._id === prodId);
-        product.number = 1;
-        data.orders.list.push(product);
+        if(product.quantity > 0)
+        {
+          product.number = 1;
+          data.orders.list.push(product);
+        }else return;
       } else data.orders.list[index].number += 1;
       // 3.Calculate totalprice again:
       calctotalPrice();
@@ -125,8 +128,7 @@ var UIController = (function() {
           <img
             src="${e.image}"
             alt="product-img"
-            height="200" width="300"
-            class = "img-fluid"
+            height="200" width="250"
           />
           <div class="card-body text-center">
             <h4 class = "card-product-name">
@@ -185,6 +187,7 @@ var UIController = (function() {
     desProd: function(obj) {
       const quantityDom = obj.siblings(".card-product-quantity");
       let quantity = quantityDom.text() - 1;
+      if(quantity < 0) quantity = 0;
       quantityDom.text(`${quantity}`);
       if (quantity === 0) {
         obj.remove();
